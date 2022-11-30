@@ -2,7 +2,7 @@
 
 This repo provides automation for setting up a CUR in a customer account in such a way that the Stacklet platform, running in a different account, can access and use the CUR data.
 
-More background information, along with instructions for accomplishing the same thing via the AwS console, can be found in the [Cost and Usage Report wiki page](https://stacklet.atlassian.net/wiki/spaces/ENG/pages/1207042052/Cost+and+Usage+Report+CUR).
+More background information, along with instructions for accomplishing the same thing via the AWS console, can be found in the [Cost and Usage Report wiki page](https://stacklet.atlassian.net/wiki/spaces/ENG/pages/1207042052/Cost+and+Usage+Report+CUR).
 
 ## Overview
 
@@ -25,3 +25,16 @@ The terraform expects two inputs:
 * The account ID where the Stacklet platform for this customer is deployed
 
 Both of these can be found in the `manifest.json` file for the customer, in https://github.com/stacklet/imp-manifests.
+
+## Running the Terraform
+
+Make sure you update the `export`s below with real values.
+
+```bash
+cd terraform/
+terraform init
+export TF_VAR_stacklet_saas_account_id=<saas-account-id>
+export TF_VAR_customer_prefix=<customer-prefix>
+terraform plan
+terraform apply
+ ```
