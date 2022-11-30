@@ -16,3 +16,12 @@ It does the following:
 * Grants limited permissions to the assumable role on the S3 bucket
 
 This setup ensures that the CUR is in the format required by Stacklet, and that the Stacklet platform SAAS account has access to the CUR data in the customer's S3 bucket.
+
+## Inputs
+
+The terraform expects two inputs:
+
+* The customer prefix
+* The account ID where the Stacklet platform for this customer is deployed
+
+Both of these can be found in the `manifest.json` file for the customer, in https://github.com/stacklet/imp-manifests.
