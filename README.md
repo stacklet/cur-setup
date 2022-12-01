@@ -12,10 +12,9 @@ It does the following:
 
 * Creates an S3 bucket named `<customer-prefix>-stacklet-shared-cur` in the customer account
 * Creates an hourly CUR, with resource IDs, in parquet format, which is written to the S3 bucket
-* Creates a `stacklet-shared-cur-access` role in the customer account, which can be assumed by a `<customer-prefix>-stacklet-platform` role in the Stacklet platform SAAS account for that customer
-* Grants limited permissions to the assumable role on the S3 bucket
+* Grants limited read permissions to the S3 bucket, by the `<customer-prefix>-cur-read` role in the Stacklet platform SAAS account
 
-This setup ensures that the CUR is in the format required by Stacklet, and that the Stacklet platform SAAS account has access to the CUR data in the customer's S3 bucket.
+This setup ensures that the CUR is in the format required by Stacklet, and that the Stacklet platform SAAS account can read CUR data in the customer's S3 bucket.
 
 ## Inputs
 
