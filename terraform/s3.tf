@@ -34,15 +34,18 @@ resource "aws_iam_policy" "stacklet-shared-cur-s3-access" {
     {
       "Effect": "Allow",
       "Action": [
-          "s3:GetBucketLocation",
-          "s3:GetObject",
-          "s3:ListBucket",
-          "s3:ListBucketMultipartUploads",
-          "s3:ListMultipartUploadParts",
-          "s3:PutObject"
+          "s3:ListBucket"
       ],
       "Resource": [
-        "arn:aws:s3:::${local.s3_bucket_name}",
+        "arn:aws:s3:::${local.s3_bucket_name}"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+          "s3:GetObject"
+      ],
+      "Resource": [
         "arn:aws:s3:::${local.s3_bucket_name}/*"
       ]
     }
