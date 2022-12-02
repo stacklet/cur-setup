@@ -18,12 +18,13 @@ This setup ensures that the CUR is in the format required by Stacklet, and that 
 
 ## Inputs
 
-The terraform expects two inputs:
+The terraform accepts three inputs:
 
-* The customer prefix
-* The account ID where the Stacklet platform for this customer is deployed
+* `customer_prefix` - (required) The customer prefix
+* `stacklet_saas_account_id` - (required) The account ID where the Stacklet platform for this customer is deployed
+* `s3_region` - (optional) AWS region where the s3 bucket is created (default: us-east-1)
 
-Both of these can be found in the `manifest.json` file for the customer, in https://github.com/stacklet/imp-manifests.
+The correct values for `customer_prefix` and `stacklet_saas_account_id` can be found in the `manifest.json` file for the customer, in https://github.com/stacklet/imp-manifests.
 
 ## Running the Terraform
 
@@ -34,6 +35,7 @@ cd terraform/
 terraform init
 export TF_VAR_stacklet_saas_account_id=<saas-account-id>
 export TF_VAR_customer_prefix=<customer-prefix>
+export TF_VAR_s3_region=us-east-1
 terraform plan
 terraform apply
  ```
