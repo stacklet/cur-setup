@@ -45,11 +45,21 @@ resource "aws_s3_bucket_policy" "s3-bucket-cur-report-policy" {
         "AWS": "arn:aws:iam::${var.stacklet_saas_account_id}:role/${var.customer_prefix}-cur-read"
       },
       "Action": [
-        "s3:ListBucket",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::${local.s3_bucket_name}"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::${var.stacklet_saas_account_id}:role/${var.customer_prefix}-cur-read"
+      },
+      "Action": [
         "s3:GetObject"
       ],
       "Resource": [
-        "arn:aws:s3:::${local.s3_bucket_name}",
         "arn:aws:s3:::${local.s3_bucket_name}/*"
       ]
     }
