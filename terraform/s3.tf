@@ -44,16 +44,14 @@ resource "aws_s3_bucket_policy" "s3-bucket-cur-report-policy" {
       "Principal": {
         "AWS": "arn:aws:iam::${var.stacklet_saas_account_id}:role/${var.customer_prefix}-cur-read"
       },
-      "Action": "s3:ListBucket",
-      "Resource": "arn:aws:s3:::${local.s3_bucket_name}"
-    },
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::${var.stacklet_saas_account_id}:role/${var.customer_prefix}-cur-read"
-      },
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${local.s3_bucket_name}/*"
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::${local.s3_bucket_name}",
+        "arn:aws:s3:::${local.s3_bucket_name}/*"
+      ]
     }
   ]
 }
@@ -67,4 +65,12 @@ resource "aws_s3_bucket_public_access_block" "block_public_access" {
   block_public_policy     = true
   ignore_public_acls      = true
   restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_ownership_controls" "bucket_ownership" {
+  bucket = aws_s3_bucket.cur_bucket.id
+
+  rule {
+    object_ownership = "BucketOwnerEnforced"
+  }
 }
