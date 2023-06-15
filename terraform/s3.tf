@@ -1,10 +1,7 @@
 resource "aws_s3_bucket" "cur_bucket" {
   bucket = local.s3_bucket_name
 }
-resource "aws_s3_bucket_acl" "cur_bucket_acl" {
-  bucket = aws_s3_bucket.cur_bucket.id
-  acl    = "private"
-}
+
 resource "aws_s3_bucket_server_side_encryption_configuration" "cur_bucket_encryption_config" {
   bucket = aws_s3_bucket.cur_bucket.bucket
 
