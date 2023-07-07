@@ -1,9 +1,11 @@
 resource "aws_s3_bucket" "cur_bucket" {
+  count  = local.use_aws ? 1 : 0
   bucket = local.s3_bucket_name
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "cur_bucket_encryption_config" {
-  bucket = aws_s3_bucket.cur_bucket.bucket
+  count  = local.use_aws ? 1 : 0
+  bucket = aws_s3_bucket.cur_bucket[0].bucket
 
   rule {
     apply_server_side_encryption_by_default {
@@ -12,7 +14,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "cur_bucket_encryp
   }
 }
 resource "aws_s3_bucket_policy" "s3-bucket-cur-report-policy" {
-  bucket = aws_s3_bucket.cur_bucket.id
+  count  = local.use_aws ? 1 : 0
+  bucket = aws_s3_bucket.cur_bucket[0].id
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -66,7 +69,8 @@ EOF
 }
 
 resource "aws_s3_bucket_public_access_block" "block_public_access" {
-  bucket = aws_s3_bucket.cur_bucket.id
+  count  = local.use_aws ? 1 : 0
+  bucket = aws_s3_bucket.cur_bucket[0].id
 
   block_public_acls       = true
   block_public_policy     = true
@@ -75,7 +79,8 @@ resource "aws_s3_bucket_public_access_block" "block_public_access" {
 }
 
 resource "aws_s3_bucket_ownership_controls" "bucket_ownership" {
-  bucket = aws_s3_bucket.cur_bucket.id
+  count  = local.use_aws ? 1 : 0
+  bucket = aws_s3_bucket.cur_bucket[0].id
 
   rule {
     object_ownership = "BucketOwnerEnforced"

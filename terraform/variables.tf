@@ -4,7 +4,17 @@ variable "s3_region" {
 }
 variable "stacklet_saas_account_id" {
   type    = string
+  default = null
 }
 variable "customer_prefix" {
-  type    = string
+  type = string
+}
+
+variable "clouds" {
+  type    = list(string)
+  default = ["aws"]
+}
+
+variable "resource_group_location" {
+  type = string
 }
