@@ -1,10 +1,10 @@
 resource "aws_s3_bucket" "cur_bucket" {
-  count  = contains(var.clouds, "aws") ? 1 : 0
+  count  = local.use_aws ? 1 : 0
   bucket = local.s3_bucket_name
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "cur_bucket_encryption_config" {
-  count  = contains(var.clouds, "aws") ? 1 : 0
+  count  = local.use_aws ? 1 : 0
   bucket = aws_s3_bucket.cur_bucket[0].bucket
 
   rule {
@@ -14,7 +14,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "cur_bucket_encryp
   }
 }
 resource "aws_s3_bucket_policy" "s3-bucket-cur-report-policy" {
-  count  = contains(var.clouds, "aws") ? 1 : 0
+  count  = local.use_aws ? 1 : 0
   bucket = aws_s3_bucket.cur_bucket[0].id
   policy = <<EOF
 {
@@ -69,7 +69,7 @@ EOF
 }
 
 resource "aws_s3_bucket_public_access_block" "block_public_access" {
-  count  = contains(var.clouds, "aws") ? 1 : 0
+  count  = local.use_aws ? 1 : 0
   bucket = aws_s3_bucket.cur_bucket[0].id
 
   block_public_acls       = true
@@ -79,7 +79,7 @@ resource "aws_s3_bucket_public_access_block" "block_public_access" {
 }
 
 resource "aws_s3_bucket_ownership_controls" "bucket_ownership" {
-  count  = contains(var.clouds, "aws") ? 1 : 0
+  count  = local.use_aws ? 1 : 0
   bucket = aws_s3_bucket.cur_bucket[0].id
 
   rule {

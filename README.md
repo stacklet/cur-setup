@@ -25,7 +25,7 @@ The terraform accepts three inputs:
 * `customer_prefix` - (required) The customer prefix
 * `stacklet_saas_account_id` - (required) The account ID where the Stacklet platform for this customer is deployed
 * `s3_region` - (optional) AWS region where the s3 bucket is created (default: us-east-1)
-* `clouds` - (required) List of clouds to set up, requires ["AWS"]
+* `clouds` - (required) List of clouds to set up, requires ["aws"]
 
 If you need help identifying the correct values for `customer_prefix` and `stacklet_saas_account_id`, please contact Stacklet customer service.
 
@@ -48,7 +48,7 @@ This setup ensures that the Cost Management export is in the format required by 
 The terraform accepts three inputs:
 
 * `customer_prefix` - (required) The customer prefix
-* `clouds` - (required) List of clouds to set up, requires ["Azure"]
+* `clouds` - (required) List of clouds to set up, requires ["azure"]
 * `resource_group_location` - (required) Resource Group Location
 
 If you need help identifying the correct value for `customer_prefix`, please contact Stacklet customer service.

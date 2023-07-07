@@ -1,5 +1,5 @@
 resource "aws_cur_report_definition" "stacklet_shared_cur_report" {
-  count = contains(var.clouds, "aws") ? 1 : 0
+  count = local.use_aws ? 1 : 0
 
   report_name                = "stacklet-shared-cur-report"
   time_unit                  = "HOURLY"

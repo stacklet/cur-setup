@@ -1,3 +1,3 @@
-output "buckets" {
+output "output" {
   value = local.buckets
 }
