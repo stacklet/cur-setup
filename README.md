@@ -18,7 +18,7 @@ It does the following:
 
 This setup ensures that the CUR is in the format required by Stacklet, and that the Stacklet platform SAAS account can read CUR data in the correct S3 bucket.
 
-## Inputs
+### Inputs
 
 The terraform accepts three inputs:
 
