@@ -33,7 +33,7 @@ If you need help identifying the correct values for `customer_prefix` and `stack
 
 ### Overview
 
-The terraform in this repository is meant to be applied in each subscription, independent of any account in which the STacklet platform is running, and must be applied by a user or service principal that has permissions to create Cost Management exports, storage accounts, and resource groups. Stacklet utilizes credentials provided in Stacklet to read from the created Storage Account. 
+The terraform in this repository is meant to be applied in each subscription, independent of any account in which the Stacklet platform is running, and must be applied by a user or service principal that has permissions to create Cost Management exports, storage accounts, and resource groups. Stacklet utilizes credentials provided in Stacklet to read from the created Storage Account.
 
 It does the following:
 
