@@ -6,6 +6,9 @@ More background information, along with instructions for accomplishing the same 
 
 ## AWS
 
+> [!TIP]
+> For AWS users, a Terraform module is available at https://github.com/stacklet/terraform-aws-stacklet-cur-setup
+
 ### Overview
 
 The terraform in this repository is meant to be applied in your organization's payer account, independent of any account in which the Stacklet platform is running, and must be applied by a role that has permissions to create a new CUR in the AWS billing console.
