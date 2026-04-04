@@ -1,0 +1,4 @@
+just 1.40.0
+terraform 1.13.5
+tflint v0.61.0
+uv 0.8.14
